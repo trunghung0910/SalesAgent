@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<listing xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Ui:etc/ui_configuration.xsd">
+    <argument name="data" xsi:type="array">
+        <item name="js_config" xsi:type="array">
+            <item name="provider" xsi:type="string">salesagent_index_listing.salesagent_index_listing_data_source</item>
+        </item>
+    </argument>
+    <settings>
+        <spinner>salesagent_index_listing_columns</spinner>
+        <deps>
+            <dep>salesagent_index_listing.salesagent_index_listing_data_source</dep>
+        </deps>
+    </settings>
+    <dataSource name="salesagent_index_listing_data_source" component="Magento_Ui/js/grid/provider">
+        <settings>
+            <updateUrl path="mui/index/render"/>
+            <storageConfig>
+                <param name="indexField" xsi:type="string">item_id</param>
+            </storageConfig>
+        </settings>
+        <dataProvider class="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider" name="salesagent_index_listing_data_source">
+            <settings>
+                <requestFieldName>item_id</requestFieldName>
+                <primaryFieldName>item_id</primaryFieldName>
+            </settings>
+        </dataProvider>
+    </dataSource>
+    <listingToolbar name="listing_top">
+        <settings>
+            <sticky>true</sticky>
+        </settings>
+        <bookmark name="bookmarks"/>
+
+        <!-- <filterSearch name="fulltext">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="provider" xsi:type="string">salesagent_index_listing.salesagent_index_listing_data_source</item>
+                    <item name="chipsProvider" xsi:type="string">salesagent_index_listing.salesagent_index_listing.listing_top.listing_filters_chips</item>
+                    <item name="storageConfig" xsi:type="array">
+                        <item name="provider" xsi:type="string">salesagent_index_listing.salesagent_index_listing.listing_top.bookmarks</item>
+                        <item name="namespace" xsi:type="string">current.search</item>
+                    </item>
+                </item>
+            </argument>
+        </filterSearch> -->
+
+        <columnsControls name="columns_controls"/>
+        <!-- <exportButton name="export_button"/> -->
+        <filters name="listing_filters">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="templates" xsi:type="array">
+                        <item name="filters" xsi:type="array">
+                            <item name="select" xsi:type="array">
+                                <item name="component" xsi:type="string">Magento_Ui/js/form/element/ui-select</item>
+                                <item name="template" xsi:type="string">ui/grid/filters/elements/ui-select</item>
+                            </item>
+                        </item>
+                    </item>
+                </item>
+            </argument>
+        </filters>
+        <paging name="listing_paging"/>
+        <!-- <massaction name="listing_massaction" /> -->
+    </listingToolbar>
+    <columns name="salesagent_index_listing_columns">
+        <!-- <selectionsColumn name="entity_id">
+            <settings>
+                <indexField>entity_id</indexField>
+            </settings>
+        </selectionsColumn> -->
+        <column name="sku">
+            <settings>
+                <label translate="true">SKU</label>
+                <filter>text</filter>
+            </settings>
+        </column>
+        <column name="name">
+            <settings>
+                <filter>text</filter>
+                <label translate="true">Product Name</label>
+            </settings>
+        </column>
+        <column name="sa_commission_value" class="AHT\SalesAgent\Ui\Component\Listing\Column\Commission">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">120</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Value</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="sa_commission_type" class="AHT\SalesAgent\Ui\Component\Listing\Column\Commission">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">130</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Type</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="saleagent_name">
+            <settings>
+                <label translate="true">Sales Agent</label>
+            </settings>
+        </column>
+        <column name="ordered_qty">
+            <settings>
+                <label translate="true">QTY</label>
+            </settings>
+        </column>
+        <column name="base_price" class="AHT\SalesAgent\Ui\Component\Listing\Column\Commission">
+            <settings>
+                <label translate="true">Price</label>
+            </settings>
+        </column>
+        <column name="result_commission" >
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="sortOrder" xsi:type="number">110</item>
+                    <item name="label" translate="true" xsi:type="string">Commission Result</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="bodyTmpl" xsi:type="string">ui/grid/cells/html</item>
+                </item>
+            </argument>
+        </column>
+        <column name="status">
+            <settings>
+                <label translate="true">Status</label>
+            </settings>
+        </column>
+    </columns>
+</listing>

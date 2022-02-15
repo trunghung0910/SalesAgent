@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Magento\Theme\Block\Html\Header" type="AHT\SalesAgent\Block\Html\Header" />
+    <preference for="AHT\SalesAgent\Block\Account\SortLinkInterface"
+                type="AHT\SalesAgent\Block\Account\SortLink"/>
+
+	<type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+		<arguments>
+			<argument name="collections" xsi:type="array">                
+				<item name="salesagent_index_listing_data_source" xsi:type="string">AHT\SalesAgent\Model\ResourceModel\SalesAgent\Grid\Collection</item>
+			</argument>
+		</arguments>
+	</type>
+    <type name="AHT\SalesAgent\Model\ResourceModel\SalesAgent\Grid\Collection">
+		<arguments>
+			<argument name="mainTable" xsi:type="string">aht_sales_agent</argument>
+			<argument name="resourceModel" xsi:type="string">AHT\SalesAgent\Model\ResourceModel\SalesAgent\Collection</argument>
+		</arguments>
+	</type>
+
+</config>
